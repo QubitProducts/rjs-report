@@ -96,9 +96,10 @@ var aq = _.find(buildInfo.bundles, function (bundle) {
       }
     });
     sized = _.sortBy(sized, "size");
-    console.log(sized);
     _.each(sized, function (module) {
-      console.log(formatSize(module.size), "/", formatSize(module.gzipped), module.name);
+      if (module.size > duplicateSizeTreshold) {
+        console.log(formatSize(module.size), "/", formatSize(module.gzipped), module.name);
+      }
     });
   }
 });
