@@ -1,4 +1,4 @@
-# ranalyser
+# ranalyse
 
 Analyse your r.js optimization output.
 
