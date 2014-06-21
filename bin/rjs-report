@@ -10,7 +10,7 @@ var defaultMinSize = 40 * 1024;
 
 program
   .version(version)
-  .option('-d, --dir [path]', 'The r.js optimization output dir (should contain the build.txt file)', '.')
+  .option('-d, --dir [path]', 'The r.js optimization output dir (should contain the build.txt file)', '.');
 
 program
   .command('bundles')
@@ -29,7 +29,7 @@ program
   .option('-s, --min-size [bytes]', 'filter by min size', defaultMinSize)
   .option('-G, --no-grouping', 'don\'t group by bundle')
   .action(function (cmd) {
-    printer.modules(rr.modules(root(), cmd), cmd)
+    printer.modules(rr.modules(root(), cmd), cmd);
   });
 
 program
@@ -47,7 +47,7 @@ program
   .action(function (cmd) {
     printer.duplicates(rr.duplicates(root(), cmd), cmd);
     printer.bundles(rr.bundles(root(), cmd), cmd);
-  })
+  });
 
 program.parse(process.argv);
 
