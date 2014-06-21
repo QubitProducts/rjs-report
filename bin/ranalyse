@@ -1,0 +1,71 @@
+#!/usr/bin/env node
+
+var path = require('path');
+var program = require('commander');
+var version = require('../package.json').version;
+var ranalyse = require('../index');
+
+var defaultMinSize = 40 * 1024;
+
+program
+  .version(version)
+  .option('-d, --dir [path]', 'The r.js optimization output dir (should contain the build.txt file)', '.')
+
+program
+  .command('bundles')
+  .description('list bundles')
+  .option('-p, --plain', 'a list of paths with no size information')
+  .action(function (cmd) {
+    if (cmd.plain) {
+      console.log(ranalyse.bundlesPlain(root()).join('\n'));
+    } else {
+      console.log(ranalyse.bundles(root()).toString());
+    }
+  });
+
+program
+  .command('modules')
+  .description('list modules in a bundle')
+  .option('-p, --plain', 'a list of paths with no size information')
+  .option('-b, --bundle [name]', 'filter by bundle')
+  .option('-g, --grep [name]', 'filter by name')
+  .option('-s, --size [bytes]', 'filter by min size', defaultMinSize)
+  .action(function (cmd) {
+    if (cmd.plain) {
+      console.log(ranalyse.modulesPlain(root(), cmd).join('\n'));
+    } else {
+      ranalyse.modules(root(), cmd);
+    }
+  });
+
+program
+  .command('duplicates')
+  .description('list duplicate modules found in bundles')
+  .option('-s, --size [bytes]', 'minimum size of duplicates to be reported', defaultMinSize)
+  .action(function (cmd) {
+    ranalyse.duplicates(root(), cmd);
+  });
+
+program
+  .command('summary')
+  .description('reports size of each bundle and large duplicates')
+  .option('-s, --size [bytes]', 'minimum size of duplicates to be reported', defaultMinSize)
+  .action(function (cmd) {
+    ranalyse.duplicates(root(), cmd);
+    console.log(ranalyse.bundles(root()).toString());
+  })
+
+program.parse(process.argv);
+
+if (!program.args.length) {
+  program.help();
+}
+
+function root() {
+  var root = path.resolve(process.cwd(), program.dir);
+  if (!ranalyse.validRoot(root)) {
+    console.log('build.txt not found in the build output directory', root);
+    process.exit(1);
+  }
+  return root;
+}

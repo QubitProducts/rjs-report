@@ -10,10 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "cli-color": "^0.3.2",
+    "commander": "^2.2.0",
     "easy-table": "^0.3.0",
     "gzip-size": "^0.2.0",
     "lodash": "^2.4.1",
     "numeral": "^1.5.3",
+    "ramda": "^0.1.5",
     "rjs-build-analysis": "0.0.3"
   }
 }
