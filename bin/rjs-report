@@ -3,7 +3,8 @@
 var path = require('path');
 var program = require('commander');
 var version = require('../package.json').version;
-var ranalyse = require('../index');
+var rr = require('../index');
+var printer = require('../lib/printer');
 
 var defaultMinSize = 40 * 1024;
 
@@ -16,43 +17,36 @@ program
   .description('list bundles')
   .option('-p, --plain', 'a list of paths with no size information')
   .action(function (cmd) {
-    if (cmd.plain) {
-      console.log(ranalyse.bundlesPlain(root()).join('\n'));
-    } else {
-      console.log(ranalyse.bundles(root()).toString());
-    }
+    printer.bundles(rr.bundles(root(), cmd), cmd);
   });
 
 program
   .command('modules')
-  .description('list modules in a bundle')
+  .description('list modules')
   .option('-p, --plain', 'a list of paths with no size information')
   .option('-b, --bundle [name]', 'filter by bundle')
   .option('-g, --grep [name]', 'filter by name')
-  .option('-s, --size [bytes]', 'filter by min size', defaultMinSize)
+  .option('-s, --min-size [bytes]', 'filter by min size', defaultMinSize)
+  .option('-G, --no-grouping', 'don\'t group by bundle')
   .action(function (cmd) {
-    if (cmd.plain) {
-      console.log(ranalyse.modulesPlain(root(), cmd).join('\n'));
-    } else {
-      ranalyse.modules(root(), cmd);
-    }
+    printer.modules(rr.modules(root(), cmd), cmd)
   });
 
 program
   .command('duplicates')
-  .description('list duplicate modules found in bundles')
-  .option('-s, --size [bytes]', 'minimum size of duplicates to be reported', defaultMinSize)
+  .description('list modules found in multiple bundles')
+  .option('-s, --min-size [bytes]', 'minimum size of duplicates to be reported', defaultMinSize)
   .action(function (cmd) {
-    ranalyse.duplicates(root(), cmd);
+    printer.duplicates(rr.duplicates(root(), cmd), cmd);
   });
 
 program
   .command('summary')
-  .description('reports size of each bundle and large duplicates')
-  .option('-s, --size [bytes]', 'minimum size of duplicates to be reported', defaultMinSize)
+  .description('report size of each bundle and large duplicates')
+  .option('-s, --min-size [bytes]', 'minimum size of duplicates to be reported', defaultMinSize)
   .action(function (cmd) {
-    ranalyse.duplicates(root(), cmd);
-    console.log(ranalyse.bundles(root()).toString());
+    printer.duplicates(rr.duplicates(root(), cmd), cmd);
+    printer.bundles(rr.bundles(root(), cmd), cmd);
   })
 
 program.parse(process.argv);
@@ -63,7 +57,7 @@ if (!program.args.length) {
 
 function root() {
   var root = path.resolve(process.cwd(), program.dir);
-  if (!ranalyse.validRoot(root)) {
+  if (!rr.validRoot(root)) {
     console.log('build.txt not found in the build output directory', root);
     process.exit(1);
   }
