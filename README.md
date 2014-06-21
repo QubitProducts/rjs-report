@@ -47,37 +47,6 @@ js/lib/highcharts-more.js                                            61.1KB   16
                                                                      4.9MB    1.2MB
 ```
 
-Module (261.7KB / 56.2KB) js/lib/d3/d3.js duplicated in
-  js/app/modules/books/routes/books_new_route.js
-  js/app/modules/magazines/routes/magazines_route.js
-
-
-Module (59.9KB / 12.5KB) js/lib/fileupload/jquery.fileupload.js duplicated in
-  js/app/modules/books/routes/review_route.js
-  js/app/modules/books/routes/editors_route.js
-
-
-Module (53.1KB / 10.9KB) js/lib/jquery.sparkline.js duplicated in
-  js/app/modules/magazines/routes/magazines_route.js
-  js/app/modules/music/routes/music_route.js
-
-
-Bundle                                                               Size     Gzipped
--------------------------------------------------------------------  -------  -------
-js/app/modules/books/routes/editors_route.js                         1.7MB    367.2KB
-js/app/modules/magazines/routes/magazines_route.js                   965.8KB  223.4KB
-js/app/boot.js                                                       485.6KB  129.1KB
-js/lib/highcharts.js                                                 453.0KB  129.9KB
-js/app/modules/books/routes/books_new_route.js                       449.8KB  102.8KB
-js/app/modules/books/routes/review_route.js                          337.7KB  80.6KB
-js/app/modules/music/routes/music_route.js                           271.8KB  65.5KB
-js/app/modules/books/routes/experiment_route.js                      173.5KB  41.3KB
-js/app/modules/books/routes/books_route.js                           172.6KB  41.2KB
-js/lib/highcharts-more.js                                            61.1KB   16.9KB
--------------------------------------------------------------------  -------  -------
-                                                                     4.9MB    1.2MB
-```
-
 ```
 rjs-report -d public/dist modules --min-size 200000 --no-grouping
 
