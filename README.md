@@ -4,7 +4,7 @@ Analyse your r.js optimization output. Especially useful when optimizing your ap
 
 ## Why?
 
-Large web applications can be bundled into multiple chunks (or multiple bundles) using r.js optimizer. This can help speed up the initial load of the app since the browser needs to donwload smaller files as well as parse and evaluate less code. Splitting the app into separate dynamically loaded parts can also help in development since less modules need to be loaded in on any given page. However, sometimes when creating these bundles with r.js, you might need to tweak which bundle certain modules should go to. If a module is large, you could
+Large web applications can be bundled into multiple chunks (or multiple bundles) using r.js optimizer. This can help speed up the initial load of the app since the browser needs to download smaller files as well as parse and evaluate less code. Splitting the app into separate dynamically loaded parts can also help in development since less modules need to be loaded in on any given page. However, sometimes when creating these bundles with r.js, you might need to tweak which bundle certain modules should go to. If a module is large, you could
 
 * build into the root bundle if it's needed frequently
 * duplicate it into some of the page bundles to avoid weighing down the rest of the pages
