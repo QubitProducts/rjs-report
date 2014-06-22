@@ -149,6 +149,21 @@ rjs-report -d public/dist summary --min-size 20000
     -s, --min-size [bytes]  minimum size of duplicates to be reported
 ```
 
+## Programmatic API
+
+All of the same commands and (most of the) options are available for use within node. The commands return JSON.
+
+```js
+var path = require('path');
+var rr = require('rjs-report');
+
+var buildDir = path.resolve(__dirname, "./public/app-built");
+
+rr.bundles(buildDir);
+rr.bundles(buildDir, {plain: true});
+rr.modules("../mdashboard/public/app/www-built", {minSize: 100000})
+```
+
 ## TODO
 - [ ] support modules with plugins in the module id
 - [ ] resolve paths that don't directly map to the file system (mapped/aliased modules)
