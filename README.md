@@ -6,7 +6,7 @@ Analyse your r.js optimization output. Especially useful when optimizing your ap
 
 Large web applications can be bundled into multiple chunks (or multiple bundles) using r.js optimizer. This can help speed up the initial load of the app since the browser needs to download smaller files as well as parse and evaluate less code. Splitting the app into separate dynamically loaded parts can also help in development since less modules need to be loaded in on any given page. However, sometimes when creating these bundles with r.js, you might need to tweak which bundle certain modules should go to. If a module is large, you could
 
-* build into the root bundle if it's needed frequently
+* build it into the root bundle if it's needed frequently
 * duplicate it into some of the page bundles to avoid weighing down the rest of the pages
 * put it into it's own bundle and load it on demand
 
@@ -22,8 +22,9 @@ rjs-report helps you make those decisions by listing the sizes of bundles, modul
 
 ## Examples
 
+Summary report
+
 ```
-# the default summary view
 rjs-report -d public/dist summary
 
 Module (261.7KB / 56.2KB) lib/d3/d3.js duplicated in
@@ -57,6 +58,8 @@ lib/highcharts-more.js                                               61.1KB   16
                                                                      4.9MB    1.2MB
 ```
 
+Module report
+
 ```
 rjs-report -d public/dist modules --min-size 200000 --no-grouping
 
@@ -65,6 +68,25 @@ rjs-report -d public/dist modules --min-size 200000 --no-grouping
 247.0KB / 72.2KB lib/jquery.js
 16.7KB / 4.9KB components/leap/view.js
 ```
+
+Plain bundle list
+
+```
+rjs-report -d public/dist bundles --plain
+
+app/modules/books/routes/editor_route.js
+app/modules/magazines/routes/magazines_route.js
+app/modules/books/routes/books_new_route.js
+app/modules/books/routes/review_route.js
+app/modules/music/routes/music_route.js
+app/modules/books/routes/experiment_route.js
+app/modules/books/routes/books_route.js
+lib/highcharts-more.js
+lib/highcharts.js
+app/boot.js
+```
+
+rjs-report
 
 ## Usage
 
