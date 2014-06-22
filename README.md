@@ -109,10 +109,10 @@ rjs-report -d public/dist summary --min-size 20000
 
   Commands:
 
-    bundles [options]      list bundles
-    modules [options]      list modules
-    duplicates [options]   list modules found in multiple bundles
     summary [options]      report size of each bundle and large duplicates
+    duplicates [options]   list modules found in multiple bundles
+    modules [options]      list and filter modules
+    bundles [options]      list bundles
 
   Options:
 
@@ -121,15 +121,26 @@ rjs-report -d public/dist summary --min-size 20000
     -d, --dir [path]  The r.js optimization output dir (should contain the build.txt file)
 ```
 
-### bundles
+### summary
 
 ```
-  Usage: bundles [options]
+  Usage: summary [options]
 
   Options:
 
-    -h, --help   output usage information
-    -p, --plain  a list of paths with no size information
+    -h, --help              output usage information
+    -s, --min-size [bytes]  minimum size of duplicates to be reported
+```
+
+### duplicates
+
+```
+  Usage: duplicates [options]
+
+  Options:
+
+    -h, --help              output usage information
+    -s, --min-size [bytes]  minimum size of duplicates to be reported
 ```
 
 ### modules
@@ -147,26 +158,15 @@ rjs-report -d public/dist summary --min-size 20000
     -G, --no-grouping       don't group by bundle
 ```
 
-### duplicates
+### bundles
 
 ```
-  Usage: duplicates [options]
+  Usage: bundles [options]
 
   Options:
 
-    -h, --help              output usage information
-    -s, --min-size [bytes]  minimum size of duplicates to be reported
-```
-
-### summary
-
-```
-  Usage: summary [options]
-
-  Options:
-
-    -h, --help              output usage information
-    -s, --min-size [bytes]  minimum size of duplicates to be reported
+    -h, --help   output usage information
+    -p, --plain  a list of paths with no size information
 ```
 
 ## Programmatic API
