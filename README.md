@@ -181,7 +181,7 @@ var buildDir = path.resolve(__dirname, "./public/app-built");
 
 rr.bundles(buildDir);
 rr.bundles(buildDir, {plain: true});
-rr.modules("../mdashboard/public/app/www-built", {minSize: 100000})
+rr.modules(buildDir, {minSize: 100000})
 ```
 
 ## TODO
