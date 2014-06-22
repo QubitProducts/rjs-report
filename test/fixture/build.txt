@@ -1,0 +1,14 @@
+
+app/modules/books/routes/book_index_state.js
+----------------
+lib/backbone.js
+lib/d3/d3.js
+
+app/routes/book_edit_state.js
+----------------
+app/ui/select.js
+lib/backbone.js
+
+lib/highcharts.js
+----------------
+lib/highcharts.js

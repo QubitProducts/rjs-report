@@ -1,0 +1,8 @@
+Bundle                                        Size  Gzipped
+--------------------------------------------  ----  -------
+app/routes/book_edit_state.js                 15B   35B    
+lib/highcharts.js                             10B   30B    
+app/modules/books/routes/book_index_state.js  0     0      
+--------------------------------------------  ----  -------
+                                              25B   65B    
+

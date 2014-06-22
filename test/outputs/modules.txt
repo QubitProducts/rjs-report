@@ -1,0 +1,17 @@
+app/modules/books/routes/book_index_state.js
+--------------------------------------------
+8B / 28B lib/backbone.js
+0 / 0 lib/d3/d3.js
+
+
+app/routes/book_edit_state.js
+-----------------------------
+8B / 28B lib/backbone.js
+6B / 26B app/ui/select.js
+
+
+lib/highcharts.js
+-----------------
+10B / 30B lib/highcharts.js
+
+

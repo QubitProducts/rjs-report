@@ -4,7 +4,7 @@ var path = require('path');
 var program = require('commander');
 var version = require('../package.json').version;
 var rr = require('../index');
-var printer = require('../lib/printer');
+var commands = require('../lib/commands');
 
 var defaultMinSize = 40 * 1024;
 
@@ -16,17 +16,18 @@ program
   .command('summary')
   .description('report size of each bundle and large duplicates')
   .option('-s, --min-size [bytes]', 'minimum size of duplicates to be reported', defaultMinSize)
+  .option('-c, --no-colors', 'Don\'t use colors in the report output')
   .action(function (cmd) {
-    printer.duplicates(rr.duplicates(root(), cmd), cmd);
-    printer.bundles(rr.bundles(root(), cmd), cmd);
+    commands.summary(root(), cmd);
   });
 
 program
   .command('duplicates')
   .description('list modules found in multiple bundles')
   .option('-s, --min-size [bytes]', 'minimum size of duplicates to be reported', defaultMinSize)
+  .option('-c, --no-colors', 'Don\'t use colors in the report output')
   .action(function (cmd) {
-    printer.duplicates(rr.duplicates(root(), cmd), cmd);
+    commands.duplicates(root(), cmd);
   });
 
 program
@@ -38,7 +39,7 @@ program
   .option('-s, --min-size [bytes]', 'filter by min size', defaultMinSize)
   .option('-G, --no-grouping', 'don\'t group by bundle')
   .action(function (cmd) {
-    printer.modules(rr.modules(root(), cmd), cmd);
+    commands.modules(root(), cmd);
   });
 
 program
@@ -46,7 +47,7 @@ program
   .description('list bundles')
   .option('-p, --plain', 'a list of paths with no size information')
   .action(function (cmd) {
-    printer.bundles(rr.bundles(root(), cmd), cmd);
+    commands.bundles(root(), cmd);
   });
 
 program.parse(process.argv);

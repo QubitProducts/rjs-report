@@ -1,0 +1,3 @@
+app/modules/books/routes/book_index_state.js
+app/routes/book_edit_state.js
+lib/highcharts.js

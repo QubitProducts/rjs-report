@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "buster-test"
   },
   "bin": {
     "rjs-report": "./bin/rjs-report"
@@ -19,5 +19,9 @@
     "numeral": "^1.5.3",
     "ramda": "^0.1.5",
     "rjs-build-analysis": "0.0.3"
+  },
+  "devDependencies": {
+    "buster": "^0.7.13",
+    "fixture-stdout": "^0.2.1"
   }
 }
