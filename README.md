@@ -25,7 +25,7 @@ rjs-report helps you make those decisions by listing the sizes of bundles, modul
 Summary report
 
 ```
-rjs-report -d public/dist summary
+$ rjs-report -d public/dist summary
 
 Module (261.7KB / 56.2KB) lib/d3/d3.js duplicated in
   app/modules/books/routes/books_new_route.js
@@ -61,7 +61,7 @@ lib/highcharts-more.js                                               61.1KB   16
 Module report
 
 ```
-rjs-report -d public/dist modules --min-size 200000 --no-grouping
+$ rjs-report -d public/dist modules --min-size 200000 --no-grouping
 
 453.0KB / 129.9KB lib/highcharts.js
 261.7KB / 56.2KB lib/d3/d3.js
@@ -72,7 +72,7 @@ rjs-report -d public/dist modules --min-size 200000 --no-grouping
 Plain bundle list
 
 ```
-rjs-report -d public/dist bundles --plain
+$ rjs-report -d public/dist bundles --plain
 
 app/modules/books/routes/editor_route.js
 app/modules/magazines/routes/magazines_route.js
