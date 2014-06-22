@@ -86,8 +86,6 @@ lib/highcharts.js
 app/boot.js
 ```
 
-rjs-report
-
 ## Usage
 
 Install
