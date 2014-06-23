@@ -1,16 +1,29 @@
 {
   "name": "rjs-report",
   "version": "0.1.0",
-  "description": "",
+  "description": "Analyse r.js build output - report size of bundles, duplicated modules, programmatic and cli APIs",
   "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "test": "buster-test"
   },
   "bin": {
     "rjs-report": "./bin/rjs-report"
   },
-  "author": "Karolis Narkevicius <karolis@qubitproducts.com>",
-  "license": "ISC",
+  "keywords": [
+    "require",
+    "require.js",
+    "module",
+    "report",
+    "r.js",
+    "rjs",
+    "analyse",
+    "bundle",
+    "optimization",
+    "duplicates"
+  ],
   "dependencies": {
     "cli-color": "^0.3.2",
     "commander": "^2.2.0",
@@ -23,5 +36,15 @@
   "devDependencies": {
     "buster": "^0.7.13",
     "fixture-stdout": "^0.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/QubitProducts/rjs-report.git"
+  },
+  "author": "Karolis Narkevicius <karolis@qubitproducts.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/QubitProducts/rjs-report/issues"
+  },
+  "homepage": "https://github.com/QubitProducts/rjs-report"
 }
