@@ -1,5 +1,7 @@
 # rjs-report
 
+[![Build Status](https://travis-ci.org/QubitProducts/rjs-report.svg?branch=master)](https://travis-ci.org/QubitProducts/rjs-report)
+
 Analyse your r.js optimization output. Especially useful when optimizing your app into multiple output bundles. See the size of each bundle and large duplicated modules.
 
 ## Why?
