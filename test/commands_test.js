@@ -38,6 +38,11 @@ buster.testCase('Commands', {
     assert.equals(output, expectedOutput('modules'));
   },
 
+  'modules --no-grouping': function () {
+    commands.modules(buildDir, {minSize: 0, grouping: false});
+    assert.equals(output, expectedOutput('modules_no_grouping'));
+  },
+
   'duplicates': function () {
     commands.duplicates(buildDir, {minSize: 0});
     assert.equals(output, expectedOutput('duplicates'));
